@@ -7,3 +7,13 @@ export const GET_TODOS = gql`
     completed
   }
 `;
+
+export const ADD_TODO = gql`
+  mutation AddTodo($text: String!) @client {
+    addTodo(text: $text) {
+      id
+      text
+      completed
+    }
+  }
+`;

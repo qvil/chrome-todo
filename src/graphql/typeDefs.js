@@ -7,6 +7,9 @@ const typeDefs = `
   type Query {
     todos: [Todo]
   }
+  type Mutation {
+    addTodo(text: String!): Todo
+  }
 `;
 
 export default typeDefs;
