@@ -5,14 +5,18 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
+import { ApolloProvider } from "react-apollo";
+import client from "./graphql/clientState";
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <>
-      <App />
-      <GlobalStyle />
-    </>
-  </ThemeProvider>,
+  <ApolloProvider client={client}>
+    <ThemeProvider theme={theme}>
+      <>
+        <App />
+        <GlobalStyle />
+      </>
+    </ThemeProvider>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
