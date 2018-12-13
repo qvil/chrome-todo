@@ -1,26 +1,39 @@
 import { GET_TODOS } from "./queries";
 
+export const defaults = {
+  todos: []
+};
+
+let nextTodoId = 0;
+
 const resolvers = {
-  Query: {
-    todos: (_, __, { cache }) => {
-      console.log(111);
-      const query = GET_TODOS;
-      const todo = cache.readQuery({ query });
-      console.log(todo);
-      return todo;
-    }
-  },
   Mutation: {
     addTodo: (_, { text }, { cache }) => {
-      // const query = GET_TODOS;
-      console.log(text);
-      const data = {
-        todos: { id: 1, text: text, completed: false }
+      const query = GET_TODOS;
+      const previous = cache.readQuery({ query });
+      const newTodo = {
+        id: nextTodoId++,
+        text,
+        completed: false,
+        __typename: "TodoItem"
       };
+      const data = {
+        todos: previous.todos.concat([newTodo])
+      };
+      console.log(text);
       cache.writeData({ data });
-      return 333;
+      return newTodo;
     }
   }
+  // Query: {
+  //   todos: (_, __, { cache }) => {
+  //     console.log(111);
+  //     const query = GET_TODOS;
+  //     const todo = cache.readQuery({ query });
+  //     console.log(todo);
+  //     return todo;
+  //   }
+  // }
 };
 
 export default resolvers;
