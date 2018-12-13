@@ -9,12 +9,12 @@ class App extends Component {
 
     return (
       <Mutation mutation={ADD_TODO}>
-        {(addTodo, { data }) => (
+        {addTodo => (
           <div>
             <form
               onSubmit={e => {
                 e.preventDefault();
-                addTodo({ variables: { type: input.value } });
+                addTodo({ variables: { text: input.value } });
                 input.value = "";
               }}
             >
