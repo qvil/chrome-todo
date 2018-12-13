@@ -20,7 +20,6 @@ const resolvers = {
       const data = {
         todos: previous.todos.concat([newTodo])
       };
-      console.log(text);
       cache.writeData({ data });
       return newTodo;
     }

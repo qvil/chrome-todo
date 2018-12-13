@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import Button from "./components/Button";
+import Input from "./components/Input";
 import { Query, Mutation } from "react-apollo";
 import { GET_TODOS, ADD_TODO } from "./graphql/queries";
 
 const Todos = () => (
   <Query query={GET_TODOS}>
-    {({ loading, error, data }) => {
-      if (loading) return "Loading";
-      if (error) return `Error : ${error.message}`;
-
-      console.log(data);
-      return data.length > 1 ? (
+    {({ data: { todos } }) => {
+      return (
         <ul>
-          {data.todos.map(todo => (
+          {todos.map(todo => (
             <li key={todo.id}>{todo.text}</li>
           ))}
         </ul>
-      ) : null;
+      );
     }}
   </Query>
 );
@@ -29,23 +26,24 @@ class App extends Component {
       <Mutation mutation={ADD_TODO}>
         {addTodo => (
           <div>
+            <h1>GraphQL Todos</h1>
             <form
               onSubmit={e => {
                 e.preventDefault();
                 addTodo({ variables: { text: input.value } });
                 input.value = "";
               }}
+              style={{ width: 500 }}
             >
-              <input
+              <Input
                 ref={node => {
                   input = node;
                 }}
+                placeholder="Input here"
               />
-              <button type="submit">Add Todo</button>
+              <Button type="submit">Add Todo</Button>
             </form>
-            <h1>TODO</h1>
             <Todos />
-            <Button>Button</Button>
           </div>
         )}
       </Mutation>
