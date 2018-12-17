@@ -6,7 +6,8 @@ import Todo from "./Todo";
 const TodoList = () => (
   <Query query={GET_TODOS}>
     {({ data: { todos } }) => {
-      return (
+      console.log(todos);
+      return !todos || !todos.length ? null : (
         <ul>
           {todos.map(todo => (
             <Todo key={todo.id} {...todo} />

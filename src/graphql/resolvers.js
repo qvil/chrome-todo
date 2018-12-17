@@ -1,6 +1,6 @@
 import { GET_TODOS } from "./queries";
 import { TODO_FRAGMENT } from "./fragments";
-import { saveTodos } from "../chrome";
+import { saveTodos, getTodos } from "../chrome";
 
 // export let defaults = [];
 
@@ -38,6 +38,11 @@ const resolvers = {
       return null;
     }
   }
+  // Query: {
+  //   todos: (_, __, ___) => {
+  //     return getTodos();
+  //   }
+  // }
 };
 
 export default resolvers;
