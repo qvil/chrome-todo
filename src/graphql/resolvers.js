@@ -1,4 +1,5 @@
 import { GET_TODOS } from "./queries";
+import { TODO_FRAGMENT } from "./fragments";
 
 export const defaults = {
   todos: []
@@ -22,6 +23,14 @@ const resolvers = {
       };
       cache.writeData({ data });
       return newTodo;
+    },
+    toggleTodo: (_, variables, { cache }) => {
+      const id = `TodoItem:${variables.id}`;
+      const fragment = TODO_FRAGMENT;
+      const todo = cache.readFragment({ fragment, id });
+      const data = { ...todo, completed: !todo.completed };
+      cache.writeData({ id, data });
+      return null;
     }
   }
 };

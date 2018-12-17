@@ -19,3 +19,9 @@ export const ADD_TODO = gql`
     }
   }
 `;
+
+export const TOGGLE_TODO = gql`
+  mutation ToggleTodo($id: Int!) {
+    toggleTodo(id: $id) @client
+  }
+`;

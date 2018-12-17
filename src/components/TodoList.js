@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { GET_TODOS } from "../graphql/queries";
+import Todo from "./Todo";
 
 const TodoList = () => (
   <Query query={GET_TODOS}>
@@ -8,11 +9,12 @@ const TodoList = () => (
       return (
         <ul>
           {todos.map(todo => (
-            <li key={todo.id}>{todo.text}</li>
+            <Todo key={todo.id} {...todo} />
           ))}
         </ul>
       );
     }}
   </Query>
 );
+
 export default TodoList;
