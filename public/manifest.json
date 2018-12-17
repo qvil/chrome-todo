@@ -11,6 +11,7 @@
       "128": "images/get_started128.png"
     }
   },
+  "permissions": ["storage"],
   "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'",
   "manifest_version": 2
 }

@@ -1,11 +1,14 @@
 import { GET_TODOS } from "./queries";
 import { TODO_FRAGMENT } from "./fragments";
+import { saveTodos } from "../chrome";
+
+// export let defaults = [];
 
 export const defaults = {
-  todos: []
+  todos: [{ id: 0, text: "first", completed: false, __typename: "TodoItem" }]
 };
 
-let nextTodoId = 0;
+let nextTodoId = 1;
 
 const resolvers = {
   Mutation: {
@@ -22,6 +25,8 @@ const resolvers = {
         todos: previous.todos.concat([newTodo])
       };
       cache.writeData({ data });
+      saveTodos(cache);
+
       return newTodo;
     },
     toggleTodo: (_, variables, { cache }) => {
