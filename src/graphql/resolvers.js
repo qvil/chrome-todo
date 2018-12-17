@@ -24,15 +24,6 @@ const resolvers = {
       return newTodo;
     }
   }
-  // Query: {
-  //   todos: (_, __, { cache }) => {
-  //     console.log(111);
-  //     const query = GET_TODOS;
-  //     const todo = cache.readQuery({ query });
-  //     console.log(todo);
-  //     return todo;
-  //   }
-  // }
 };
 
 export default resolvers;

@@ -1,22 +1,9 @@
 import React, { Component } from "react";
 import Button from "./components/Button";
 import Input from "./components/Input";
-import { Query, Mutation } from "react-apollo";
-import { GET_TODOS, ADD_TODO } from "./graphql/queries";
-
-const Todos = () => (
-  <Query query={GET_TODOS}>
-    {({ data: { todos } }) => {
-      return (
-        <ul>
-          {todos.map(todo => (
-            <li key={todo.id}>{todo.text}</li>
-          ))}
-        </ul>
-      );
-    }}
-  </Query>
-);
+import { Mutation } from "react-apollo";
+import { ADD_TODO } from "./graphql/queries";
+import TodoList from "./components/TodoList";
 
 class App extends Component {
   render() {
@@ -43,7 +30,7 @@ class App extends Component {
               />
               <Button type="submit">Add Todo</Button>
             </form>
-            <Todos />
+            <TodoList />
           </div>
         )}
       </Mutation>
