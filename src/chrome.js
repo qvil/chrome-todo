@@ -11,16 +11,20 @@ export const saveTodos = cache => {
 };
 
 export const getTodos = () => {
-  let todos;
-  try {
-    // eslint-disable-next-line no-undef
-    chrome.storage.sync.get(["todos"], res => {
-      console.log(res);
-      todos = res.todos ? res.todos : [];
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  return new Promise((resolve, reject) => {
+    let todos;
+    try {
+      // eslint-disable-next-line no-undef
+      chrome.storage.sync.get(["todos"], res => {
+        console.log(res);
+        todos = res.todos ? res.todos : [];
+      });
+    } catch (error) {
+      console.error(error);
+    }
 
-  return todos;
+    resolve(todos);
+    // return todos;
+    // return [];
+  });
 };

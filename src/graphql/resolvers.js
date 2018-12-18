@@ -2,12 +2,10 @@ import { GET_TODOS } from "./queries";
 import { TODO_FRAGMENT } from "./fragments";
 import { saveTodos, getTodos } from "../chrome";
 
-// export let defaults = [];
-
-export const defaults = {
-  todos: [{ id: 0, text: "first", completed: false, __typename: "TodoItem" }]
-};
-
+// export const defaults = {
+//   todos: [{ id: 0, text: "first", completed: false, __typename: "TodoItem" }]
+// };
+export let defaults;
 let nextTodoId = 1;
 
 const resolvers = {
@@ -37,12 +35,17 @@ const resolvers = {
       cache.writeData({ id, data });
       return null;
     }
+  },
+  Query: {
+    todos: (_, __, ___) => {
+      // defaults = getTodos();
+      getTodos().then(res => {
+        console.log(res);
+        return (defaults = res);
+      });
+      return null;
+    }
   }
-  // Query: {
-  //   todos: (_, __, ___) => {
-  //     return getTodos();
-  //   }
-  // }
 };
 
 export default resolvers;

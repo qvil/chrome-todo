@@ -5,13 +5,13 @@ import resolvers, { defaults } from "./resolvers";
 import typeDefs from "./typeDefs";
 
 const cache = new InMemoryCache();
-const stateLink = withClientState({ cache, typeDefs, resolvers });
+const stateLink = withClientState({ cache, typeDefs, resolvers, defaults });
 const client = new ApolloClient({
   cache,
-  link: stateLink,
-  initializers: {
-    todos: () => []
-  }
+  link: stateLink
+  // initializers: {
+  //   todos: () => defaults.todos
+  // }
 });
 
 // client.onResetStore(stateLink.writeDefaults);
