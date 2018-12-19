@@ -6,7 +6,6 @@ import Todo from "./Todo";
 const TodoList = () => (
   <Query query={GET_TODOS}>
     {({ data: { todos } }) => {
-      console.log(todos);
       return !todos || !todos.length ? null : (
         <ul>
           {todos.map(todo => (
