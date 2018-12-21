@@ -1,7 +1,7 @@
 import { GET_TODOS } from "./queries";
 import { TODO_FRAGMENT } from "./fragments";
-import { saveTodos, getTodos } from "../localStorage";
-// import { saveTodos, getTodos } from "../chrome";
+// import { saveTodos, getTodos } from "../localStorage";
+import { saveTodos, getTodos } from "../chrome";
 
 // export const defaults = {
 //   todos: [{ id: 0, text: "first", completed: false, __typename: "TodoItem" }]

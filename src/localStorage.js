@@ -2,26 +2,15 @@ import { GET_TODOS } from "./graphql/queries";
 
 export const saveTodos = cache => {
   const { todos } = cache.readQuery({ query: GET_TODOS });
-  const _todos = JSON.stringify(todos);
   try {
-    // localStorage.setItem("todos", _todos);
-    // eslint-disable-next-line no-undef
-    chrome.storage.local.set({ todos: _todos }, () => {
-      console.log(`Set value : ${_todos}`);
-    });
+    localStorage.setItem("todos", JSON.stringify(todos));
   } catch (error) {
     console.error(error);
   }
 };
 
 export const getTodos = () => {
-  // const todos = localStorage.getItem("todos");
-  var todos;
-  // eslint-disable-next-line no-undef
-  chrome.storage.local.get(["todos"], result => {
-    todos = result;
-    console.log(`Get value : ${result}`);
-  });
+  const todos = localStorage.getItem("todos");
   if (todos) {
     try {
       return JSON.parse(todos);
