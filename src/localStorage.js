@@ -5,6 +5,7 @@ export const saveTodos = cache => {
   const _todos = JSON.stringify(todos);
   try {
     // localStorage.setItem("todos", _todos);
+    // eslint-disable-next-line no-undef
     chrome.storage.local.set({ todos: _todos }, () => {
       console.log(`Set value : ${_todos}`);
     });
@@ -16,6 +17,7 @@ export const saveTodos = cache => {
 export const getTodos = () => {
   // const todos = localStorage.getItem("todos");
   var todos;
+  // eslint-disable-next-line no-undef
   chrome.storage.local.get(["todos"], result => {
     todos = result;
     console.log(`Get value : ${result}`);
