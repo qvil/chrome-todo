@@ -1,0 +1,3 @@
+[submodule "src/lib/react-qui"]
+	path = src/lib/react-qui
+	url = https://github.com/qvil/react-qui.git
