@@ -6,6 +6,8 @@ import Todo from "./Todo";
 
 const Container = styled.div`
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TodoList = () => (
