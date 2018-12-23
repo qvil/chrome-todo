@@ -8,6 +8,7 @@ const Input = styled.input`
   color: palevioletred;
   background-color: white;
   border: 2px solid palevioletred;
+  flex: ${props => (props.fullWidth ? 1 : 0)};
 `;
 
 export default Input;
