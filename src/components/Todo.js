@@ -18,7 +18,21 @@ const SyltedTodo = styled.input`
  * Todo
  * React-QUI Radio Button
  */
-// const CompleteButton = styled.button``;
+const CompleteButton = styled.button`
+  background-color: rgba(255, 255, 255, 1);
+  outline: none;
+  border: 1px solid ${props => props.theme.color.primary};
+  border-radius: 2px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: red;
+  }
+  &:active {
+    color: red;
+    /* background: #bbb;
+    background-color: rgba(255, 255, 255, 0.8); */
+  }
+`;
 
 class Todo extends React.Component {
   state = { todo: this.props.text };
@@ -33,9 +47,8 @@ class Todo extends React.Component {
         {toggleTodo => (
           <Container>
             {/* <Button /> */}
-            {/* <CompleteButton /> */}
+            <CompleteButton onClick={toggleTodo}>O</CompleteButton>
             <SyltedTodo
-              // onClick={toggleTodo}
               style={{
                 textDecoration: completed ? "line-through" : "none"
               }}
