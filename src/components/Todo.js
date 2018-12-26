@@ -2,7 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import styled from "styled-components";
 import { TOGGLE_TODO } from "../graphql/queries";
-// import { Button } from "../lib/react-qui/build";
+import Button from "../lib/react-qui/src/lib/Button";
 
 const Container = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ class Todo extends React.Component {
       <Mutation mutation={TOGGLE_TODO} variables={{ id }}>
         {toggleTodo => (
           <Container>
-            {/* <Button /> */}
+            <Button>QUI Button</Button>
             <CompleteButton onClick={toggleTodo}>O</CompleteButton>
             <SyltedTodo
               style={{
