@@ -28,6 +28,7 @@ class App extends Component {
             <Title>Today Scrum</Title>
             <Form
               onSubmit={e => {
+                if (input.value.trim() === "") return;
                 e.preventDefault();
                 addTodo({ variables: { text: input.value } });
                 input.value = "";
