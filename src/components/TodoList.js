@@ -12,7 +12,8 @@ const Container = styled.div`
 
 const TodoList = () => (
   <Query query={GET_TODOS}>
-    {({ data: { todos } }) => {
+    {({ data, data: { todos } }) => {
+      console.log(data); // Object but has no property
       return !todos || !todos.length ? null : (
         <Container>
           {todos.map(todo => (

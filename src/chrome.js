@@ -13,19 +13,22 @@ export const saveTodos = cache => {
   }
 };
 
-export const getTodos = () => {
+export const getTodos = async () => {
   // eslint-disable-next-line no-undef
-  chrome.storage.local.get(["todos"], todos => {
+  await chrome.storage.local.get(["todos"], todos => {
     console.log(`Get value : ${JSON.stringify(todos)}`);
     if (todos) {
       try {
+        console.log(11);
         return todos;
       } catch (error) {
         console.error(error);
+        console.log(22);
         return [];
       }
     }
   });
 
-  return [];
+  console.log(333);
+  // return [];
 };
